@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Bull's Eye</title>
+   
+ </head>
+
+ <body>
+  <img src="smiley.png" style="position:absolute; top:100px; right:100px ;" onclick=alert('hello'); />
+   
+ </body> 
+ </html>

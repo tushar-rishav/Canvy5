@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Bull's Eye</title>
+   <style>
+   img
+   { position:relative;
+     top: 100px;
+     left:200px;
+   
+   }
+   
+   </style>   
+ </head>
+
+ <body>
+   <p id="show_time" style="float:right; vertical align:bottom; width:20%"></p>
+   <img id="smile" src="smiley.png"  onclick="play()" />
+   
+   <script>   
+   var x,y,count=0,start_minute=0,end_minute=0,start_second=0,end_second=0;
+   var start_time=new Date;  
+   
+    start_minute=start_time.getMinutes();
+    start_second=start_time.getSeconds();   
+       
+   function play()
+   {  ++count;
+   x=Math.round(Math.random()*screen.availWidth);
+   y=Math.round(Math.random()*600);
+  
+   document.getElementById("smile").style.left=x+"px";    
+   document.getElementById("smile").style.top=y+"px";
+
+   }
+   
+     
+   time_check();  
+  
+  function time_check()
+  {
+   var end_time=new Date;
+   
+   end_minute=end_time.getMinutes();
+   end_second=end_time.getSeconds();   
+   var timeInterval=((end_minute*60+end_second)-(start_minute*60+start_second))  
+    
+  if(timeInterval<20)
+    {  if (timeInterval<5) 
+       document.body.style.backgroundColor="green";
+         else if(timeInterval<10)
+           document.body.style.backgroundColor="blue";
+             else if(timeInterval<15)
+               document.body.style.backgroundColor="gray";
+                 else if(timeInterval<20)
+                  document.body.style.backgroundColor="aqua";
+         	
+    var set_time=setTimeout(function () {time_check();},500) 
+  
+     }
+  else 
+  {
+  	clearTimeout(set_time);
+  	alert("Game Over!! Your score is:  "+count);
+  	var bool=confirm("want to play again and improve your best?");
+  	if(bool)
+  	{  count=0;
+  	  var start_time=new Date;  
+   
+     start_minute=start_time.getMinutes();
+     start_second=start_time.getSeconds(); 
+    
+  	  time_check();
+  	}
+  	
+   else 
+   alert("Thankyou for playing! have a good day!");
+        
+  	
+  }
+  
+  
+  
+ }
+   </script>
+   
+ 
+ </body> 
+ </html>
