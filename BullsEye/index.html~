@@ -1,44 +1,70 @@
 <!DOCTYPE html>
- <html>
-  
-  <head>
-   <title>Bull's Eye</title>
-   <style>
-   ul{
-     display:inline;
-     list-style-type: none;
-      }
-    ul,li{
-    background-color:green;
-    display:inline;
-    width:100%;
-    
-    }
-    li:hover{background-color:white;}
-    a
-    {
-     font-family:cursive;
-     font-weight:400;
-     color:white;
-     text-decoration:none;
-     }
-     a:hover
-     {
-     font-family:monospace;
-     font-weight:900;
-     color:green; 
-     }  
-  </style>
-  </head>
-  
-  <body>
-  
-  <ul>
-  <li><a href="instruction.html">Instructions</a></li>
-  <li><a href="bullsEye.html">Play</a></li>
-  <li><a href="https://www.facebook.com/tushar.rishav">Contact me</a></li>
-  </ul>
-  <li><a href="mailto::tushar.rishav@gmail.com">Feedback</a></li>
-  </body>
-  
-  </html>
+<html>
+
+<head>
+
+<style>
+body{
+background-image:url("incredibleIndia.jpg");
+background-repeat:no-repeat;
+background-size:1366px 768px;
+opacity:0.9;
+width:100%
+
+
+}
+
+table{border-collapse:collapse;}
+table, td, th
+{width:100%;
+box-shadow:10px 10px 10px #999;
+border:0px solid green;
+}
+tr:hover
+{
+background-color:orange;
+font-family:monospace;
+font-weight:900;
+font-size:20px;
+opacity:1;
+}
+th
+{
+background-color:green;
+color:white;
+
+}
+
+a{text-decoration:none;
+color:white; }
+a:hover{text-decoration:none;
+color:white;}
+
+</style>
+</head>
+
+<body>
+<table>
+<tr>
+  <th onclick="instruction()" style="cursor:pointer;">Read Instructions</th>
+</tr>
+<tr>
+  <td><a href="bullsEye.html" target="_parent">Play the game Bull's Eye</a></td>
+</tr>
+<tr>
+<td><a href="https://www.facebook.com/tushar.rishav/" target="_blank">Contact me</td>
+</tr>
+
+<tr>
+<td><a href="mailto::tushar.rishav@gmail.com">Feedback</a></td>
+</tr>
+</table>
+
+<script type="text/javascript">
+function instruction(){
+alert("Hello beautiful people! Bull's Eye is a very simple game.All you have to do is to click at smiley icon\nwhich will be appearing at random positions on your monitor.you will get points for clicking at right place.\nPlease note that your time is limited to 20seconds only.\n All the best! :)")
+	}
+</script>>
+
+</body>
+</html>
