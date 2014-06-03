@@ -2,6 +2,16 @@
 <html>
  <head>
    <title>Bull's Eye</title>
+    <script>
+    function instructions()
+    {
+    	var txt="Hello! You are welcome to play Bull's Eye.This is a game to check your hand-eye coordination.\nIn this game a smiley icon will appear at random position
+      on your monitor screen.\nAll you have to do is to click at these icons.You have 20 seconds before the game ends.\n
+      All the best! Hope you enjoy it! :)";
+     alert(txt); 
+    }  
+    </script>      
+
    <style>
    img
    { position:relative;
@@ -14,6 +24,8 @@
  </head>
 
  <body>
+   <script type="text/javascript">instructions();</script>
+   
    <p id="show_time" style="float:right; vertical align:bottom; width:20%"></p>
    <img id="smile" src="smiley.png"  onclick="play()" />
    

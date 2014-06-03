@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <html>
+  
+  <head>
+   <title>Bull's Eye</title>
+   <style>
+   ul{
+     display:inline;
+     list-style-type: none;
+      }
+    ul,li{
+    background-color:green;
+    display:inline;
+    width:100%;
+    
+    }
+    li:hover{background-color:white;}
+    a
+    {
+     font-family:cursive;
+     font-weight:400;
+     color:white;
+     text-decoration:none;
+     }
+     a:hover
+     {
+     font-family:monospace;
+     font-weight:900;
+     color:green; 
+     }  
+  </style>
+  </head>
+  
+  <body>
+  
+  <ul>
+  <li><a href="instruction.html">Instructions</a></li>
+  <li><a href="bullsEye.html">Play</a></li>
+  <li><a href="https://www.facebook.com/tushar.rishav">Contact me</a></li>
+  </ul>
+  <li><a href="mailto::tushar.rishav@gmail.com">Feedback</a></li>
+  </body>
+  
+  </html>
