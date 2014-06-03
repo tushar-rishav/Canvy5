@@ -1,4 +1,4 @@
 TimePass
 ========
-These are some of my past time Works
+These are some of my spare time Works
 PastTimeWork
