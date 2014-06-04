@@ -10,18 +10,19 @@
      left:200px;
    
    }
+   img:hover{cursor:pointer;}
    
    </style>   
  </head>
 
  <body>
+   <progress id="prog" min="1" max="38" value="00" style="width:100%"> </progress>
    
    
-   <p id="show_time" style="float:right; vertical align:bottom; width:20%"></p>
    <img id="smile" src="smiley.png"  onclick="play()" />
    
    <script>   
-   var x,y,count=0,start_minute=0,end_minute=0,start_second=0,end_second=0;
+   var x,y,count=0,start_minute=0,end_minute=0,start_second=0,end_second=0,bar=0;
    var start_time=new Date;  
    
     start_minute=start_time.getMinutes();
@@ -30,11 +31,11 @@
    function play()
    {  ++count;
    x=Math.round(Math.random()*screen.availWidth);
-   y=Math.round(Math.random()*600);
+   y=Math.round(Math.random()*550);
   
    document.getElementById("smile").style.left=x+"px";    
-   document.getElementById("smile").style.top=y+"px";
-
+   document.getElementById("smile").style.top=y+10+"px";
+   
    }
    
      
@@ -58,7 +59,7 @@
                  else if(timeInterval<20)
                   document.body.style.backgroundColor="aqua";
          	
-    var set_time=setTimeout(function () {time_check();},500) 
+    var set_time=setTimeout(function () {time_check();document.getElementById("prog").value=++bar},500) 
   
      }
   else 
