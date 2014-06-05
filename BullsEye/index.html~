@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+<link rel="icon" href="smiley.png" />
 <style>
 body{
 background-image:url("incredibleIndia.jpg");
