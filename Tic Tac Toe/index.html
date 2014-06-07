@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="icon" href="smiley.png"></link>
+<style>
+body{
+background-attachment: fixed;	
+background-image:url("bing.png");
+background-repeat:no-repeat;
+background-size:1366px 768px;
+opacity:0.9;
+width:100%
+}
+
+table{border-collapse:collapse;}
+table, td
+{
+display:block;	
+width:100%;
+border:0px;
+background-color:transparent;
+color: white;
+font-family: monospace;
+cursor:pointer;
+
+
+}
+td:hover
+{
+background-color:transparent;
+font-family:cursive;
+color:white;
+font-weight:900;
+font-size:17px;
+box-shadow:20px 20px 20px #700;
+}
+
+
+a{
+	text-decoration:none;
+    color:white; 
+ }
+a:hover{
+	    text-decoration:none;
+        color:white;
+       }
+img
+{
+ width:40px;
+ height:40px;	
+}       
+#main
+{   padding-left:300px;
+    padding-top:300px;
+	padding-bottom:300px;
+	padding-right:300px;
+    text-align: center;
+	margin-top: 300px;
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-bottom: 300px;
+	background-color: #fe8c01;
+   	
+
+}
+#main:hover
+{
+	background-color:transparent;
+}
+
+</style>
+<script>
+
+function startTime() {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = h+":"+m+":"+s;
+    var t = setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+</script>
+</head>
+
+<body onload="startTime();">
+<marquee><img src="player1.png" /><p style="display:inline; font-family:cursive; font-size:20px;">You are welcome on this page!</p><img src="player2.png" /></marquee>
+
+<div id="txt" style="font-weight:900;font-size:20px;"></div>
+<div id="main">
+<table>
+
+<tr>
+  <td><a href="ttt.html">Proceed to play!</td>
+</tr>
+
+
+<tr>
+<td><a href="https://www.facebook.com/tushar.rishav/" target="_blank">Contact me</td>
+</tr>
+
+
+<tr>
+<td><a href="mailto::tushar.rishav@gmail.com">Feedback</a></td>
+</tr>
+
+<tr>
+<td onclick="alert('Hello! I am Tushar.Currently I am a B.Tech I year student from\n National Institute Of Technology,Tiruchirappalli. :) ')">About Me</td>
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>
