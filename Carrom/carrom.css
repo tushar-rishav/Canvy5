@@ -1,0 +1,123 @@
+@-webkit-keyframes adding_life{
+0%{
+	background-color:#008200;
+	border-color:blue;
+	border-radius:5px;
+	border-width:medium;
+	
+}
+
+30%{
+	background-color:#00ce00;
+	border-color:blue;
+	border-radius:6px;
+	border-width:thick;
+	
+
+}
+
+90%{
+
+	background-color:#0fff0f;
+	border-color:blue;
+	border-radius:7px;
+	border-width:thick;
+	
+}
+
+100%{
+	background-color:#80ff80;
+	border-color:blue;
+	border-radius:8px;
+	border-width:thick;
+	
+}
+
+
+}
+@-moz-keyframes adding_life{
+0%{
+	background-color:#008200;
+	border-color:blue;
+	border-radius:5px;
+	border-width:medium;
+	
+}
+
+30%{
+	background-color:#00ce00;
+	border-color:blue;
+	border-radius:6px;
+	border-width:thick;
+	
+
+}
+
+90%{
+
+	background-color:#0fff0f;
+	border-color:blue;
+	border-radius:7px;
+	border-width:thick;
+	
+}
+
+100%{
+	background-color:#80ff80;
+	border-color:blue;
+	border-radius:8px;
+	border-width:thick;
+	
+}
+
+
+}
+
+body{
+-webkit-animation-name: adding_life;
+-webkit-animation-duration: 3s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-direction: alternate;
+-webkit-animation-timing-function: linear;
+
+-moz-animation-name: adding_life;
+-moz-animation-duration: 3s;
+-moz-animation-iteration-count: infinite;
+-moz-animation-direction: alternate;
+-moz-animation-timing-function: linear;
+
+
+margin:0px;
+background-color:#80ff80;
+text-align:center;
+
+}
+#game_area{
+
+/*margin:50px;*/
+position:relative;
+top:40px;
+background-color:"#000000";
+}
+#speed_control_wrapper{
+margin:2px;
+position:relative;
+top:35px;
+border-style:solid;
+border-color:blue;
+border-radius:5px;
+border-width:medium;
+width:20%;
+}
+#speed_control_wrapper:hover{
+-webkit-animation-name: adding_life;
+-webkit-animation-duration: 3s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-direction: alternate;
+-webkit-animation-timing-function: linear;
+
+background:transparent;
+border-color:white;
+border-radius:8px;
+border-width:medium;
+}

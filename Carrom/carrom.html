@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+ 
+<html>
+	<head>
+		<script>
+           document.title="Carrom";		
+		</script>
+		
+	    <meta name="viewport" content="width=device_width" charset="UTF-8" />
+		<link href="carrom.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		
+			<canvas id="game_area" height="500" width="500">
+				Sorry buddy but you gotta upgrade your browser to see wonder! :D
+			</canvas>
+			<br>
+			<div id="speed_control_wrapper">
+			   <!-- <progress id="speed_control" min="1" max="10" value="4" style="width:100%; background-color:blue;" ></progress> -->
+				<input id="speed_control" type="range" min=1 max=10 value="1" onchange="new_speed();" ></input>
+		    </div>
+		
+		
+	        <script src="carrom.js" type="text/javascript"></script>	
+	</body>
+	
+</html>
