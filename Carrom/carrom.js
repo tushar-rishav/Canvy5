@@ -1,6 +1,3 @@
-var msg="A game of carrom CONTROLS are RIGHT ARROW KEY to move the striker to right side LEFT ARROW KEY to move the striker to left side ENTER KEY to fire the striker LEFT CLICK on area where you want to aim at or want ur striker to strike at WORK UNDER PROGRESS";
-document.body.onload= alert(msg);
-
 g_area=document.getElementById('game_area');
 speed=document.getElementById("speed_control");
 game=g_area.getContext('2d');
