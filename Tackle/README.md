@@ -3,4 +3,4 @@ Controls are:
 	RIGHT AND LEFT ARROW KEYS FOR MOVEMENT
 	ENTER KEY TO START THE GAME
 	SPACE BAR ALONG WITH ARROW KEYS TO INCREASE THE SPEED OF PLATFORM'S MOVEMENT
-	demo at www.rishav95facepick.hol.es/TackleIT/index.html
+	demo at http://rishav95facepick.hol.es/Tackle/
