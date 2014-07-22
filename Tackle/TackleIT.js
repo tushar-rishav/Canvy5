@@ -319,6 +319,7 @@ function clearStriker()
           strikerObj.drawY=gameHeight-105;
           platformObj.drawX=gameWidth/2;
           platformObj.drawY=gameHeight-60;
+          isGameNotOver=false;
           player1.nameIs="Game Over"
           player1.updateScore();
           isStart=false;
@@ -428,18 +429,22 @@ function clearPlatform(){
 
    }
      /**************************************************************/
-
+ var isGameNotOver=true;
    function checkKeyDown(e){
       
        var  keyID = e.keyCode || e.which;
        
-      if (keyID === 13)
+      if (keyID === 13&&isGameNotOver)
     { // ENTER to start the game 
         isStart = true;
         player1.score=-1;
         player1.nameIs="Mr X";
         e.preventDefault();
     }
+    if(keyID!==13&&!isStart)
+      alert("game hasnt begin.Please refresh and press enter to play");
+  
+
 	  //console.log("the key pressed is: "+keyID);
       if(isStart)
         {
