@@ -13,16 +13,16 @@
 	<body>
 		 <section>
 
-			<canvas id="game_canvas" height="600" width="1200" ></canvas>  <!-- for background -->
+			<canvas id="game_canvas" height="600" width="1400" ></canvas>  <!-- for background -->
 
-			<canvas id="pipes_canvas" height="600" width="1200" ></canvas>
-			<canvas id="flappy_canvas" height="600" width="1200" ></canvas>
+			<canvas id="pipes_canvas" height="600" width="1400" ></canvas>
+			<canvas id="flappy_canvas" height="600" width="1400" ></canvas>
 			 <!-- for bird -->
 			
 			
 		 </section>
 
-		<script src="flappy2.js"></script>
+		<script src="flappy.js"></script>
 	</body>
 	
 

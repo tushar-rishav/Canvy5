@@ -1,5 +1,6 @@
 body{
 	text-align: center;
+	background-image: url("sprites.jpg");
 }
 #pipes_canvas,#flappy_canvas{
 	margin: -600px 0 0;
@@ -9,4 +10,9 @@ body{
 	position:relative;
 	top:-18px;
 }
+
+#game_canvas{
+	
+background-image: url("sprites.jpg");	
+	}
 

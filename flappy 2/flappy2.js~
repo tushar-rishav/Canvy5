@@ -25,11 +25,11 @@ var requestAnimFrame =  window.requestAnimationFrame ||            //adding brow
 background = new Image();
 background.src = 'flappy2.png';
 
-flappy=new createFlappy();
+flappy=new createFlappy();                                 //creating the flappy bird object
 
 function createFlappy(){
-  //this.srcX=180;
-  //this.srcY=635;
+  this.srcX=170;
+  this.srcY=630;
   this.width=80;
   this.height=50;
   this.drawX=50;
@@ -47,9 +47,9 @@ createFlappy.prototype.draw=function(){
   if(!(this.isSpacebar))
   {
     this.drawY+=5;
-    if(this.drawY>=410)         //flappy falls down
+    if( (this.drawY+this.radius)>=435)         //flappy falls down
       {  isPlaying=false;
-        flappy.playerName+="Game Over";
+         flappy.playerName+="Game Over";
                 alert(flappy.playerName);
 
       }
@@ -68,6 +68,10 @@ createFlappy.prototype.draw=function(){
     ctxFlappy.beginPath(); 
     ctxFlappy.arc (this.drawX,this.drawY,this.radius, 0, 2 * Math.PI, false); 
     ctxFlappy.fill();
+
+    ctxFlappy.strokeStyle="black";
+    ctxFlappy.strokeRect(this.drawX-this.radius,this.drawY-this.radius,2*this.radius,2*this.radius);
+    ctxFlappy.stroke();
   //ctxFlappy.drawImage(background,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.drawWidth,this.drawHeight);
 }
 createFlappy.prototype.wipe=function(){
@@ -115,6 +119,7 @@ function loop()
          
          checkHit();     // check if flappy has hit obstacles
         
+
         animationControl=requestAnimFrame(loop);
     }
 }
@@ -149,11 +154,11 @@ var obstacle=[];
 function createObstacle(X,H){
 
  this.x_init=X;
- this.height=H;
+ this.height=H;           //height of top pipe
  this.width=80;
  this.hole=100;          //hole in between them
  this.gap=250;           //gap between two obstacles
- this.totalHeight=465;
+ this.totalHeight=465;       //height of toppipe+bottompipe+hole
 }
 
 function animatePipes()
@@ -191,11 +196,13 @@ function drawPipes(){
   for(i=0;i<50;i++)
   {   ctxPipes.fillStyle="olive";
       
-      ctxPipes.fillRect(obstacle[i].x_init,0,obstacle[i].width,obstacle[i].height);  
+      ctxPipes.fillRect(obstacle[i].x_init,0,obstacle[i].width,obstacle[i].height); 
+      ctxPipes.fill(); //newly added 
        //^upper pipe created
       var as=365-obstacle[i].height;
+
        
-      if(flappy.drawX+flappy.width<obstacle[i].x_init&&flappy.drawX>obstacle[i]+obstacle[i].width)
+      if( ((flappy.drawX+flappy.radius)<obstacle[i].x_init)&& ( (flappy.drawX-flappy.radius)> (obstacle[i]+obstacle[i].width) ))
          {
           ctxPipes.fillStyle="#80ffff";
           ctxPipes.fillRect(obstacle[i].x_init,obstacle[i].height,obstacle[i].width,100);
@@ -206,7 +213,7 @@ function drawPipes(){
        }
 
 
-      ctxPipes.fillStyle="olive";
+      ctxPipes.fillStyle="olive";                              //drawing lower pipe
       ctxPipes.fillRect(obstacle[i].x_init,(obstacle[i].height+100),obstacle[i].width,as);
       //^lower pipe created
       ctxPipes.fill();
@@ -254,12 +261,6 @@ function definePipes()
 
 
 
-
-
-
-
-
-
 function checkKeyDown(e) 
 {
     var keyID = e.keyCode || e.which;
@@ -290,12 +291,14 @@ function checkHit()
     for(var i=0;i<50;i++)
     {
         //if(((flappy.drawX+flappy.drawWidth)>obstacle[i].x_init) && (flappy.drawX<(obstacle[i].x_init+obstacle[i].width)) )
-           if(((flappy.drawX+flappy.radius)>obstacle[i].x_init)&&( (flappy.drawX-flappy.radius) <(obstacle[i].x_init+obstacle[i].width)) )
+           if(  ((flappy.drawX+flappy.radius)>obstacle[i].x_init) && ((flappy.drawX-flappy.radius) <(obstacle[i].x_init+obstacle[i].width))    )
         {     // i.e if flappy is inside the pipe width
-            if ((( flappy.drawY-flappy.radius )<obstacle[i].height||(flappy.drawY+flappy.radius)>(obstacle[i].height+100)))
+            if ( ( ( flappy.drawY-flappy.radius)<obstacle[i].height)||((flappy.drawY+flappy.radius)>(obstacle[i].height+100)))
               { 
                  isPlaying=false;
                  flappy.playerName="Game Over"+flappy.playerName+"!";
+
+                 
                  window.cancelAnimationFrame(animationControl);
                  //console.log("flappyNose "+(flappy.drawX+flappy.drawWidth)+"flappy Y and  obstacle Y and obstacle x:"+flappy.drawY+" "+ obstacle[i].height+" "+obstacle[i].x_init )
                

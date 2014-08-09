@@ -1,7 +1,0 @@
-body{
-	text-align: center;
-}
-#score_canvas,#flappy_canvas{
-	margin: -600px 0 0;
-	padding: 0px;
-}
