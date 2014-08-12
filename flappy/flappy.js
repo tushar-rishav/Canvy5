@@ -6,6 +6,12 @@
      
     var canvasFlappy = document.getElementById('flappy_canvas');
     var ctxFlappy = canvasFlappy.getContext('2d');
+
+    //var canvasScore = document.getElementById('canvasScore');
+    //var ctxScore = canvasScore.getContext('2d');
+    ctxGame.fillStyle = "hsla(0, 0%, 0%, 0.5)";
+    ctxGame.font = "bold 20px Arial";
+
      
     var obstacle=[], gameWidth=canvasPipes.width, gameHeight=canvasPipes.height,bgDrawX1 = 0,bgDrawX2 = 2400;
     var  isPlaying=false;
@@ -82,6 +88,8 @@
         ctxGame.clearRect(0, 0, gameWidth, gameHeight);
         ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX1, 466, 2400, gameHeight);  //backg 1
         ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX2, 466, 2400, gameHeight);   //backg 2*/
+        ctxGame.fillText(flappy.playerName+" Score: " + score, gameWidth/3,gameHeight-50);
+
     }
     function startLoop()
     {
@@ -175,7 +183,7 @@
      
       function definePipes()
     {
-      var x1=0,h1,h2;
+      var x1=200,h1,h2;
       for(i=0;i<250;i+=2)
             {
                       h1=Math.floor(Math.random()*365);           // 465 is total height of Pipe area
@@ -296,18 +304,22 @@
            
                
            
-              if( flappy.drawX+flappy.radius>obstacle[i].x_init && flappy.drawX-flappy.radius<obstacle[i].x_init+obstacle[i].width)
+              if( flappy.drawX+flappy.radius>obstacle[i].x_init && flappy.drawX-flappy.radius<obstacle[i].x_init+obstacle[i].width-10)
              {    
-                if(flappy.drawY+flappy.radius+20<=obstacle[i].height||flappy.drawY+flappy.radius>=obstacle[i].height+obstacle[i].hole+40)
+                if(flappy.drawY+flappy.radius+25<=obstacle[i].height||flappy.drawY>=obstacle[i].height+35)  
                   {
                    
                    // console.info(flappy);
                    // console.info(obstacle[i]);
                     
-                    isPlaying=false;
+                    
                     flappy.playerName="Game Over "+flappy.playerName+".Your score is"+score;
-                    window.cancelAnimationFrame(animationControl);
-                    alert(flappy.playerName);  
+                    moveBg();
+                    drawBg();  //adding game over message before exiting
+                    isPlaying=false;
+                    //window.cancelAnimationFrame(animationControl);
+
+                  //  alert(flappy.playerName);  
                    
                   }
 
@@ -315,7 +327,6 @@
                   { 
 
                     score=obstacle[i].index/2+1;
-                   // console.log(score);
 
                   }
 
@@ -326,5 +337,7 @@
     }
 
     var score=0;
+
+   
 
     

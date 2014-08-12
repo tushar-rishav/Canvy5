@@ -1,7 +1,7 @@
 body{
 	text-align: center;
 	background-image: url("hwn4.jpg");	
-    background-size: 150% 100%;*/
+    background-size: 150% 100%;
     background-repeat: no-repeat;
 
 	/*background-image: url("sprites.png");*/
@@ -15,8 +15,5 @@ body{
 	top:-18px;
 }
 
-#game_canvas{
-	
 
-	}
 

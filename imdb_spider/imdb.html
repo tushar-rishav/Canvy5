@@ -1,0 +1,99 @@
+
+<!DOCTYPE HTML>
+	<HEAD>
+		<TITLE> IMDB rate counter </TITLE>
+		<script>
+           function startTime() {
+           var today=new Date();
+           var h=today.getHours();
+           var m=today.getMinutes();
+           var s=today.getSeconds();
+           m = checkTime(m);
+           s = checkTime(s);
+           document.getElementById('txt').innerHTML = h+":"+m+":"+s;
+           var t = setTimeout(function(){startTime()},500);
+          }
+
+        function checkTime(i) {
+         if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+         return i;
+        }
+      </script>
+      
+      <style>
+     
+        #barbox
+        {  
+          margin-top:200px;
+          margin-bottom:200px;
+          margin-left: 300px;
+          margin-right: 400px;
+          padding-bottom: 100px;
+          padding-left: 100px;
+          padding-right: 50px;
+          padding-top:100px; 
+          background-image: url('hollywood.jpg'); 
+          border-style: 10px inset;
+          border-color:#007303;
+          border-radius: 15px;
+          background-size: cover;        
+          box-shadow:40px 40px 40px #492;
+          background-attachment: fixed;	
+        }
+        body
+        {
+      	 background-color: #87b44b;
+        }
+      </style>
+      
+	</HEAD>
+	<BODY onload="startTime()">
+	   <div id="txt" style="text-align:top right;font-size:20px; font-weight:600; "></div>
+		<H3 style="color: black; font-family:cursive;">Move the mouse cursor over the stars and Click to give your rating</H3>
+		<DIV id="barbox">
+		<SPAN id="ratings" ></SPAN>
+		
+		<INPUT id="text" style="background-image:url('star_score.png');  width:50pt; height:54pt; border-radius:5pt; box-shadow:20px 20px 20px #888;  text-align:center; font-weight:900; font-color:black;">
+        </DIV>
+	  
+	
+	<SCRIPT type="text/javascript">
+	    
+          for (var i = 1; i <= 10; i++) {
+			document.getElementById('ratings').innerHTML+='<img id="s'+i+'" onmouseover="selector('+i+')" onmousedown="count('+i+')" src="star_gray.png">';
+		}
+		function selector(i){
+			for(iter=0;iter<i;iter++)
+				document.images[iter].src="star_blue.png";
+						
+						for(j=i;j<10;j++){
+							console.log(j);
+						  document.images[j].src="star_gray.png";
+
+					}
+								
+				document.querySelector('#text').value=i+'\\10';
+				document.querySelector('#text').style.color="blue";
+			   
+			}
+			
+			
+		function count(k)
+       { 
+	     var bool_value=confirm("you have rated this movie as "+k+"\\10"+"  Is this your final rating?",false);
+		 if(bool_value)
+		 {
+		   prompt("please login with your gmail address to continue","spider@nitt.edu");
+		 }
+		 else
+		 alert("please rate again!");
+		
+	    
+	   }
+		
+		
+	</SCRIPT>
+	
+	
+	</BODY>
+</HTML>

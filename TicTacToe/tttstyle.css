@@ -1,0 +1,75 @@
+.playbutton
+{
+background-image:url('cover_plain.jpg');
+width:100pt;
+height:100pt;
+}
+#reset  , #snm , #ins
+{
+height:30pt;
+width:150pt;
+position:absolute;
+bottom:10px;
+font-family:Comic sans ms;
+color:brown;
+font-size:12pt;
+}
+#reset {left:550px;}
+#snm{left:1050px;}
+#ins{left:50px;}
+#ins:hover
+{
+cursor:pointer;
+ color:green;
+}
+#reset:hover{cursor:pointer;color:green;}
+#snm:hover{cursor:pointer;color:green;}
+.gametype
+{
+
+font-family:Lucida handwriting;
+color:brown;
+font-size:28pt;
+position:absolute;
+left:500px;
+height:80pt;
+width:300pt;
+}
+.gametype:hover
+{
+ cursor:pointer;
+ color:green;
+}
+#navbar{
+height:26px;
+line-height:26px;
+width:1300px;
+margin:0 auto;
+text-align:center;
+}
+#navbar a:link, #navbar a:visited, #navbar a:hover{
+color:rgb(30,1,90);
+font-weight:bold;
+margin-right:20px;
+text-decoration:none;
+}
+#scores
+{
+position:absolute;
+left:10px;
+top:200px;
+color:rgb(30,251,190);
+font-size:28pt;
+font-family:Comic Sans ms;
+}
+#blinking
+{
+ font-family: cursive;
+     font-size: 50pt;
+     text-decoration:blink;
+     font-style: normal;
+	 color:rgb(255,100,10);
+	 position:absolute;
+	 top:-5pt;
+	 left:200px;
+ }
