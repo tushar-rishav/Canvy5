@@ -1,8 +1,10 @@
 body{
 	text-align: center;
-	background-image: url("hwn4.jpg");	
-    background-size: 150% 100%;
+	background-image: url("images/uw4.jpg");	
+	background-size: 150% 100%;
     background-repeat: no-repeat;
+   /* background-color: olive;*/
+    
 
 	/*background-image: url("sprites.png");*/
 }

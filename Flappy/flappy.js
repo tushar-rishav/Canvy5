@@ -7,14 +7,13 @@
     var canvasFlappy = document.getElementById('flappy_canvas');
     var ctxFlappy = canvasFlappy.getContext('2d');
 
-    //var canvasScore = document.getElementById('canvasScore');
-    //var ctxScore = canvasScore.getContext('2d');
+   
     ctxGame.fillStyle = "hsla(0, 0%, 0%, 0.5)";
     ctxGame.font = "bold 20px Arial";
 
      
     var obstacle=[], gameWidth=canvasPipes.width, gameHeight=canvasPipes.height,bgDrawX1 = 0,bgDrawX2 = 2400;
-    var  isPlaying=false;
+    var  isPlaying=true;
      
     var requestAnimFrame =  window.requestAnimationFrame ||            //adding browser compatibility
                             window.webkitRequestAnimationFrame ||
@@ -27,7 +26,13 @@
      
      
     background = new Image();
-    background.src = 'flappy.png';
+    background.src = 'images/flappy.png';
+
+    bigS=new Image();
+    bigS.src='images/birdie.png';
+
+    bird=new Image();
+    bird.src='images/bird.png';
 
 
      
@@ -39,11 +44,30 @@
     background.addEventListener('load', start, false);
      
     function start()
-    {
+    {     
          flappy.playerName=prompt("Your name buddy ","Mr x");
+         alert("use spacebar to control the birdie!");
          definePipes();
-         playGame();
-         
+         welcomeMsg();
+        
+    }
+
+    function welcomeMsg(){
+
+        if(isPlaying)
+        {
+          ctxGame.drawImage(bigS,292,57,97,25,gameWidth/3,gameHeight/3,gameWidth/4,gameHeight/4);
+          setTimeout(playGame,3000);
+        }
+        
+        else
+           {
+            ctxPipes.clearRect(0,0,gameWidth,gameHeight);
+                    
+            ctxGame.drawImage(bigS,394,57,97,25,gameWidth/3,gameHeight/3,gameWidth/4,gameHeight/4);
+          }
+           
+
     }
      
      
@@ -112,6 +136,7 @@
            
      
             animationControl=requestAnimFrame(loop);
+            flappy.animateFlappy();
         }
     }
      
@@ -183,7 +208,7 @@
      
       function definePipes()
     {
-      var x1=200,h1,h2;
+      var x1=800,h1,h2;
       for(i=0;i<250;i+=2)
             {
                       h1=Math.floor(Math.random()*365);           // 465 is total height of Pipe area
@@ -253,18 +278,41 @@
      
      function createFlappy(){
      
-      this.srcX=170;
-      this.srcY=630;
-      this.width=90;
-      this.height=55;
+     /* this.srcX=30.5;
+      this.srcY=490;
+      this.width=18.5;
+      this.height=12.5;*/
+
+      this.srcX=0;
+      this.srcY=70;
+      this.width=62.5;
+      this.height=50;
+
       this.drawX=50;
-      this.drawY=300;
+      this.drawY=100;
        
       this.radius=15;           // inittial value of radius was 10
       this.score=0;
       this.playerName="Mr X";
       this.isSpacebar=false;
      
+    }
+
+    createFlappy.prototype.animateFlappy=function(){
+
+     /* if(this.srcX<59&&this.srcX>2){
+        this.srcX+=28.5;
+      }
+      else
+        this.srcX=2.5;*/
+     
+       if(this.srcX<254&&this.srcX>-1){
+        this.srcX+=65;
+      }
+      else
+        this.srcX=0;
+
+       fAnimCntrl=setInterval(this.animateFlappy,20000);
     }
      
     createFlappy.prototype.draw=function(){
@@ -274,9 +322,11 @@
         if( (this.drawY+this.radius)>=415)         //flappy falls down
           {  isPlaying=false;
              flappy.playerName+=" Game Over";
-                    alert(flappy.playerName);
+                    welcomeMsg();
      
           }
+
+          
      
       }
       else
@@ -288,7 +338,7 @@
       }
      
      
-        ctxFlappy.drawImage(background,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.radius*2,this.radius*2);
+        ctxFlappy.drawImage(bird,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.radius*2,this.radius*2);
      
     }
     createFlappy.prototype.wipe=function(){
@@ -308,19 +358,15 @@
              {    
                 if(flappy.drawY+flappy.radius+25<=obstacle[i].height||flappy.drawY>=obstacle[i].height+35)  
                   {
-                   
-                   // console.info(flappy);
-                   // console.info(obstacle[i]);
                     
-                    
-                    flappy.playerName="Game Over "+flappy.playerName+".Your score is"+score;
+                    flappy.playerName="Game Over "+flappy.playerName+". Your ";
                     moveBg();
                     drawBg();  //adding game over message before exiting
                     isPlaying=false;
-                    //window.cancelAnimationFrame(animationControl);
+                    window.clearInterval(fAnimCntrl);
+                    window.cancelAnimationFrame(animationControl);
+                    welcomeMsg();
 
-                  //  alert(flappy.playerName);  
-                   
                   }
 
                   else
