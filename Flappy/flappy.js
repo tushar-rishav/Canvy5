@@ -184,8 +184,8 @@
         //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX1, 466, 2400, gameHeight);  //backg 1
         //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX2, 466, 2400, gameHeight);   //backg 2*/
         
-        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX1, 466, 2400, 250);  //backg 1
-        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX2, 466, 2400, 250);   //backg 2*/
+        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX1, 466, 2450, 250);  //backg 1
+        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX2, 466, 2450, 250);   //backg 2*/
         
         ctxGame.fillText(flappy.playerName+" Score: " + score, gameWidth/3,gameHeight-50);
 
