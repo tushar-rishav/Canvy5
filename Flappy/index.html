@@ -25,6 +25,7 @@
 
 		<div id="top" >
 			<header>Choose your bird</header>
+			<hgroup>To control bird Use Spacebar</hgroup>
 			
 			<ul>
 				<li id="l1" onclick="birdType(1)" >Phoenix</li>
@@ -38,9 +39,11 @@
 			<canvas id="game_canvas" height="600" width="1400" ></canvas>  <!-- for background and score-->
             <canvas id="pipes_canvas" height="600" width="1400" ></canvas>
 			<canvas id="flappy_canvas" height="600" width="1400" ></canvas>
-			
 		 </section>
 
+		 <div id="pAgain" onclick="screwAgain()" >
+		 	Play again
+		 </div>
 		<script  src="flappy.js"></script>
 		
 	</body>
