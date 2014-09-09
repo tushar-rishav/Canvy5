@@ -5,6 +5,6 @@ You can check demo for
 
 Air War at:http://delta.nitt.edu/~hentai/AirWar/index.html
 Tackle at: http://delta.nitt.edu/~hentai/Tackle/index.html
-Flappy at: http://delta.nitt.edu/~hentai/Flappy/Flappy/index.html
+Flappy at: http://delta.nitt.edu/~hentai/flappY/Flappy/index.html
 
 
