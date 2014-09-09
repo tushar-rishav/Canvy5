@@ -68,45 +68,7 @@
      
 
     }
-     createFlappy.prototype.animateFlappy=function(){
-
-       switch(this.indx)
-       {
-        case 1:
-        {
-          this.radius=20;
-          if(this.srcX<375&&this.srcX>9)
-                this.srcX+=90;
-
-            else
-              this.srcX=10;
-          break;
-        }
-
-        case 2:
-           {
-              this.radius=17;
-            if(this.srcX<255&&this.srcX>=0)
-                this.srcX+=64;
-            if(this.srcX>255)
-              this.srcX=0;
-            
-            break;
-           }
-       
-        case 3:
-              { if(this.srcX<76&&this.srcX>=3)
-                  this.srcX+=28;
-             
-                if(this.srcX>=76)
-                  this.srcX=3;
-               // console.log(this.srcX);
-                break;
-              }
-       
-       }
-    
-  }
+     
 
     
     function start()
@@ -115,8 +77,6 @@
         {
          
           document.getElementById("top").style.display="none";
-          flappy.playerName=prompt("Your name buddy ","Mr x");
-          alert("use spacebar to control the birdie!");
           definePipes();
           welcomeMsg();
         }
@@ -184,8 +144,8 @@
         //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX1, 466, 2400, gameHeight);  //backg 1
         //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX2, 466, 2400, gameHeight);   //backg 2*/
         
-        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX1, 466, 2450, 250);  //backg 1
-        ctxGame.drawImage(bigS, 292.5, 0, 107.5, 55, bgDrawX2, 466, 2450, 250);   //backg 2*/
+        ctxGame.drawImage(bigS, 292.5, 0, 90.5, 55, bgDrawX1, 466, 2450, 250);  //backg 1
+        ctxGame.drawImage(bigS, 292.5, 0, 90.5, 55, bgDrawX2, 466, 2450, 250);   //backg 2*/
         
         ctxGame.fillText(flappy.playerName+" Score: " + score, gameWidth/3,gameHeight-50);
 
@@ -247,12 +207,12 @@
                
         if (bgDrawX1 <=-2400) {           //if backg 1 moves to extreme left shift it to extreme right
             bgDrawX1 = 2400;
-        } else if (bgDrawX2 < -2400) {
+        } else if (bgDrawX2<=-2400) {
             bgDrawX2 = 2400;
         }
         drawBg();
         bg_speed+=0.02;
-        pipe_speed+=0.001
+        pipe_speed+=0.003
 
         if(pipe_speed>4)
           pipe_speed=3;
@@ -376,28 +336,68 @@
        
       this.radius=15;           // inittial value of radius was 10
       this.score=0;
-      this.playerName="Mr X";
+      this.playerName="Tushar";
       this.isSpacebar=false;
      
     }
  var fCounter=0;
-   
+   createFlappy.prototype.animateFlappy=function(){
+
+       switch(this.indx)
+       {
+        case 1:
+        {
+          this.radius=20;
+          if(this.srcX<375&&this.srcX>9)
+                this.srcX+=90;
+
+            else
+              this.srcX=10;
+          break;
+        }
+
+        case 2:
+           {
+              this.radius=17;
+            if(this.srcX<255&&this.srcX>=0)
+                this.srcX+=64;
+            if(this.srcX>255)
+              this.srcX=0;
+            
+            break;
+           }
+       
+        case 3:
+              { if(this.srcX<76&&this.srcX>=3)
+                  this.srcX+=28;
+             
+                if(this.srcX>=76)
+                  this.srcX=3;
+               // console.log(this.srcX);
+                break;
+              }
+       
+       }
+    
+  }
 
     createFlappy.prototype.draw=function(){
       if(!(this.isSpacebar))
       {
-        this.drawY+=4;
+        this.drawY+=6.3;
         if( (this.drawY+this.radius)>=415)         //flappy falls down
           {  
             isPlaying=false;
             welcomeMsg();
+             setTimeout(function(){document.getElementById("pAgain").style.display="block";},1000);
+                   
      
           }
 
           
      
       }
-      else
+      else Play ag
       {  
         if(this.drawY<0)
           this.drawY=0;              //for upper limit of motion of flappy
@@ -434,6 +434,8 @@
                     
                     window.cancelAnimationFrame(animationControl);
                     welcomeMsg();
+                    setTimeout(function(){document.getElementById("pAgain").style.display="block";},1000);
+                    
 
                   }
 
@@ -451,6 +453,12 @@
     }
 
     var score=0;
+
+    function screwAgain(){
+      document.getElementById("pAgain").style.display="none";
+      document.getElementById("top").style.display="block";
+      location.reload();
+    }
 
    
 
