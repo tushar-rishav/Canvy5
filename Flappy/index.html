@@ -12,16 +12,36 @@
 	</head>
 	
 	<body>
+		<style> html{display:none;} </style>
+			<script>
+				//frame killer
+   				if(self == top) {
+       					document.documentElement.style.display = 'block'; 
+   					} 
+   					else 
+    					top.location = self.location; 
+   						
+			</script>
+
+		<div id="top" >
+			<header>Choose your bird</header>
+			
+			<ul>
+				<li id="l1" onclick="birdType(1)" >Phoenix</li>
+				<li id="l3" onclick="birdType(2)" >Blue Berry</li>
+				<li id="l5" onclick="birdType(3)" >Lill berry</li>
+			</ul>
+
+		</div>	
 		 <section>
 
 			<canvas id="game_canvas" height="600" width="1400" ></canvas>  <!-- for background and score-->
-
-			<canvas id="pipes_canvas" height="600" width="1400" ></canvas>
+            <canvas id="pipes_canvas" height="600" width="1400" ></canvas>
 			<canvas id="flappy_canvas" height="600" width="1400" ></canvas>
 			
 		 </section>
 
-		<script src="flappy.js"></script>
+		<script  src="flappy.js"></script>
 		
 	</body>
 	
