@@ -28,22 +28,43 @@
 			<hgroup>To control bird Use Spacebar</hgroup>
 			
 			<ul>
-				<li id="l1" onclick="birdType(1)" >Phoenix</li>
-				<li id="l3" onclick="birdType(2)" >Blue Berry</li>
-				<li id="l5" onclick="birdType(3)" >Lill berry</li>
+				
+				<li id="l2" onclick="birdType(2)" onmouseover="changeFlappyPos(2)" >Blue berry</li>
+				<li id="l3" onclick="birdType(3)" onmouseover="changeFlappyPos(3)" >Lill berry</li>
+				<li id="l4" onclick="birdType(4)" onmouseover="changeFlappyPos(4)" >Red berry</li>
 			</ul>
+			<img src="images/flappy.png" width="200" height="200" id="guide"></img>
 
 		</div>	
 		 <section>
 
-			<canvas id="game_canvas" height="600" width="1400" ></canvas>  <!-- for background and score-->
-            <canvas id="pipes_canvas" height="600" width="1400" ></canvas>
-			<canvas id="flappy_canvas" height="600" width="1400" ></canvas>
+			<canvas id="game_canvas" height="590" width="1360" ></canvas>  <!-- for background and score-->
+            <canvas id="pipes_canvas" height="559" width="1360" ></canvas>
+			<canvas id="flappy_canvas" height="559" width="1360" ></canvas>
 		 </section>
 
 		 <div id="pAgain" onclick="screwAgain()" >
 		 	Play again
 		 </div>
+		 <span id="score"></span>
+		 
+		 <script>
+			 		 	im=document.getElementById("guide");
+
+		 function changeFlappyPos(pos){
+		 	switch(pos)
+		 	{
+		 		case 2: im.style.top="20px";
+		 				break;
+		 		case 3: im.style.top="50px";
+		 				break;
+		 		case 4:im.style.top="80px";
+		 				break;
+		 	}
+		 }
+
+
+		 </script>
 		<script  src="flappy.js"></script>
 		
 	</body>
