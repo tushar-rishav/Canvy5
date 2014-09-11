@@ -1,3 +1,4 @@
+   var skore;
    (function(){
      canvasGame = document.getElementById('game_canvas');
      ctxGame = canvasGame.getContext('2d');
@@ -9,16 +10,31 @@
      ctxFlappy = canvasFlappy.getContext('2d');
 
    
-    ctxGame.fillStyle = "hsla(0, 0%, 0%, 0.5)";
-    ctxGame.font = "bold 20px Arial";
+     skore=document.getElementById("score");
+     		
 
      bigS=new Image();
     bigS.src='images/birdie.png';
-   
 
-    birdChoosen=false;
-     obstacle=[], gameWidth=canvasPipes.width, gameHeight=canvasPipes.height,bgDrawX1 = 0,bgDrawX2 = 2400,colorCode=[],pipe_speed=3,bg_speed=5;
-      isPlaying=true;
+    bg1=new Image();
+    bg1.src='images/game1.png';
+    bg2=new Image();
+    bg2.src='images/game2.png';
+    bg3=new Image();
+    bg3.src='images/game3.png';
+    bg=bg3;
+
+    
+    canvy=document.getElementsByTagName("canvas");
+    for(canv=0;canv<3;canv++)
+  { 
+    canvy[canv].width=screen.availWidth-12;
+    canvy[canv].height=screen.availHeight-170;
+  }  
+    birdChoosen=false,fStyle="darkgreen";
+     obstacle=[], gameWidth=canvasPipes.width, gameHeight=canvasPipes.height,bgDrawX1 = 0,bgDrawX2 = 2400,colorCode=[],pipe_speed=4,bg_speed=4,first_time=true,bg1X=0,bg2X=2400;
+      isPlaying=true,flag=1,divd=3;
+	//skore.style.top=gameHeight-50;
 
     })();
 
@@ -41,6 +57,7 @@
            bird=new Image();
            bird.src="images/phoenix.png";                                                   
           flappy=new createFlappy(10,190,95,90,1);
+
           
           break;
         }
@@ -59,6 +76,16 @@
           flappy=new createFlappy(3,490,17,12.5,3);        //normal flappy
           break;
         }
+
+         case 4:{
+          
+          bird=new Image();
+          bird.src="images/birds.png";
+          flappy=new createFlappy(25,0,150,140,4); 
+                 //normal flappy
+          break;
+        }
+
 
         default:alert("no bird chosen");
       }
@@ -95,7 +122,7 @@
             ctxPipes.clearRect(0,0,gameWidth,gameHeight);
                     
             ctxGame.drawImage(bigS,394,57,97,25,gameWidth/3,gameHeight/3,gameWidth/4,gameHeight/4);
-            ctxGame.fillText(flappy.playerName+" Score: " + score, gameWidth/3,gameHeight-50);  // for adding score at the end
+           skore.innerHTML=flappy.playerName+" Score: " + score;  // for adding score at the end
           }
            
 
@@ -109,7 +136,7 @@
     {
        // drawBg();                    //creating a backg
         startLoop();
-                     
+         skore.innerHTML=flappy.playerName+" Score: " + score;            
         document.addEventListener('keydown', checkKeyDown);  //game controls
         document.addEventListener('keyup', checkKeyUp);
     }
@@ -141,15 +168,33 @@
     function drawBg() {
      
         ctxGame.clearRect(0, 0, gameWidth, gameHeight);
-        //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX1, 466, 2400, gameHeight);  //backg 1
-        //ctxGame.drawImage(background, 0, 465, 2400, gameHeight, bgDrawX2, 466, 2400, gameHeight);   //backg 2*/
         
         ctxGame.drawImage(bigS, 292.5, 0, 90.5, 55, bgDrawX1, 466, 2450, 250);  //backg 1
-        ctxGame.drawImage(bigS, 292.5, 0, 90.5, 55, bgDrawX2, 466, 2450, 250);   //backg 2*/
+        ctxGame.drawImage(bigS, 292.5, 0, 90.5, 55, bgDrawX2, 466, 2450, 250);   //backg 2*/drawBg
+
+        ctxGame.drawImage(bg,0,0,1500,600,bg1X,0,2450,440);
+        ctxGame.drawImage(bg,0,0,1500,600,bg2X,0,2450,440);
+
+       if(!(bgFlag%5000))
+          { 
+            if(!bflc)
+              bg=bg1;
+            if(bflc==1)
+              bg=bg2;
+            if(bflc==2)
+              bg=bg3;
+
+            bflc++;
+            bgFlag=1;
+           }
+           else
+           bgFlag++; 
+       
         
-        ctxGame.fillText(flappy.playerName+" Score: " + score, gameWidth/3,gameHeight-50);
+       skore.innerHTML=flappy.playerName+" Score: " + score;
 
     }
+   var bflc=0,bgFlag=1;
     function startLoop()
     {
         isPlaying = true;
@@ -171,7 +216,14 @@
            
      
             animationControl=requestAnimFrame(loop);
-            flappy.animateFlappy();
+            
+            if(!(flag%divd))
+            {
+              flappy.animateFlappy();
+              flag=1;
+            }
+            else
+              flag++;
         }
     }
      
@@ -203,21 +255,31 @@
     function moveBg() {
         bgDrawX1 -= bg_speed;
         bgDrawX2 -= bg_speed;
-                                    //changing coordinate data of obstacle
-               
-        if (bgDrawX1 <=-2400) {           //if backg 1 moves to extreme left shift it to extreme right
-            bgDrawX1 = 2400;
-        } else if (bgDrawX2<=-2400) {
-            bgDrawX2 = 2400;
+       
+        bg1X-=bg_speed/7;
+        bg2X-=bg_speed/7;
+
+       
+        if (bg1X <=-2400) {           //if backg 1 moves to extreme left shift it to extreme right
+            bg1X = 2400;
+        } else if (bg2X<=-2400) {
+            bg2X = 2400;
+
+        }
+
+        if (bgDrawX1 <=-2300) {           //if backg 1 moves to extreme left shift it to extreme right
+            bgDrawX1 = 2300;
+        } else if (bgDrawX2<=-2300) {
+            bgDrawX2 =2300;
         }
         drawBg();
-        bg_speed+=0.02;
-        pipe_speed+=0.003
+        bg_speed+=0.005;
+        pipe_speed+=0.005;
 
-        if(pipe_speed>4)
-          pipe_speed=3;
-        if(bg_speed>25)
-          bg_speed=5;
+        if(pipe_speed>5.5)
+          pipe_speed=4;
+        if(bg_speed>5.5)
+          bg_speed=4;
     }
      
      
@@ -226,7 +288,7 @@
      
     var obstacle=[];
     var c=0;
-    function createObstacle(X,H,clr){
+    function createObstacle(X,H){
      this.index=c++;
      this.x_init=X;
      this.height=H;           //height of top pipe
@@ -234,7 +296,7 @@
      this.hole=100;          //hole in between them
      this.gap=250;           //gap between two obstacles
      this.totalHeight=465; 
-     this.fStyle=clr;
+    
      //console.log(arguments);      //height of toppipe+bottompipe+hole
     }
      
@@ -262,13 +324,10 @@
 
                       }
 
-                        for(var c=0;c<3;c++)
-                        colorCode[c]=Math.floor(Math.random()*255);        
-                           
                          x1+=200;
-                         obstacle[i]= new createObstacle(x1,h1,colorCode);
+                         obstacle[i]= new createObstacle(x1,h1);
                          x1+=200;  
-                         obstacle[i+1]= new createObstacle(x1,h2,colorCode);
+                         obstacle[i+1]= new createObstacle(x1,h2);
      
                         if(i==249)
                                break;
@@ -282,18 +341,14 @@
      
     function drawPipes(){
            
-     
+     ctxPipes.fillStyle=fStyle;
       for(i=0;i<250;i+=2)
       {   
           var pattern=Math.floor(i%20);
           
           if(pattern<10)
           {
-            ctxPipes.fillStyle= "rgb("+obstacle[i].fStyle[0]+","+obstacle[i].fStyle[1]+","+obstacle[i].fStyle[2]+")";
             ctxPipes.fillRect(obstacle[i].x_init,0,obstacle[i].width,obstacle[i].height);
-            ctxPipes.fill();
-            
-            ctxPipes.fillStyle= "rgb("+obstacle[i].fStyle[0]+","+obstacle[i].fStyle[2]+","+obstacle[i].fStyle[1]+")";                              
             ctxPipes.fillRect(obstacle[i].x_init,(100+obstacle[i].height),obstacle[i].width,367-obstacle[i].height);
             ctxPipes.fill();
 
@@ -302,11 +357,7 @@
          else
          {
 
-            ctxPipes.fillStyle="rgb("+obstacle[i].fStyle[2]+","+obstacle[i].fStyle[1]+","+obstacle[i].fStyle[0]+")";
             ctxPipes.fillRect(obstacle[i].x_init,0,obstacle[i].width,obstacle[i].height);
-            ctxPipes.fill();
-            
-            ctxPipes.fillStyle="rgb("+obstacle[i].fStyle[1]+","+obstacle[i].fStyle[0]+","+obstacle[i].fStyle[2]+")";                              
             ctxPipes.fillRect(obstacle[i].x_init,(100+obstacle[i].height),obstacle[i].width,367-obstacle[i].height);
             ctxPipes.fill();
 
@@ -323,6 +374,7 @@
       ctxPipes.clearRect(0,0,gameWidth,gameHeight);
      }
      
+
      function createFlappy(sX,sY,sW,sH,index){
      
 
@@ -340,8 +392,8 @@
       this.isSpacebar=false;
      
     }
- var fCounter=0;
-   createFlappy.prototype.animateFlappy=function(){
+
+   createFlappy.prototype.animateFlappy=function(){  
 
        switch(this.indx)
        {
@@ -376,6 +428,115 @@
                // console.log(this.srcX);
                 break;
               }
+
+        case 4:
+              { 
+                
+                 this.radius=15;
+                        if(this.srcX<915)
+                        { 
+                            if(!this.srcY)                        //first row 
+                          {    
+                            if(!first_time)
+                              this.srcX+=182;
+
+                            this.height=150;
+                            this.width=140;
+                            first_time=false;
+                            
+                            if(this.srcX>900)
+                             { 
+                               this.srcX=25;
+                               this.srcY=210;
+                               first_time=true;
+                             }
+
+                          }
+                        
+                        else if(this.srcY==210)                         //second row
+                        
+                         { 
+                           if(!first_time)
+                            this.srcX+=180;
+                          
+                          this.height=130;
+                          this.width=145;
+                          first_time=false;
+
+                          if(this.srcX>900)
+                             { 
+                               this.srcX=25;
+                               this.srcY=390;
+                               first_time=true;
+                             }
+                         }
+                            if(this.srcY>=370)                  //third row             // pain here!!
+                              {
+                                if(this.srcX==25)
+                                 {
+                                   this.height=105;
+                                   this.width=145;
+
+                                   if(drawn)
+                                   {
+                                    this.srcX=210;
+                                    drawn=false;
+                                   }
+                                  
+                                }
+                                else if(this.srcX==210)
+                                 {
+                                 
+                                  this.height=105;
+                                  this.width=150;
+                                  if(drawn)
+                                    {
+                                      this.srcX=375;
+                                      drawn=false;
+                                    }
+                                  
+                                }
+                                
+                                else if(this.srcX==375)
+                                 {
+                                 
+                                  this.height=105;
+                                  this.width=165;
+                                  if(drawn)
+                                    {
+                                      this.srcX=544;
+                                      drawn=false;
+                                    }
+                                 }
+                                else if(this.srcX==544)
+                                 {
+                                 
+                                  this.height=105;
+                                  this.width=155;
+                                  if(drawn)
+                                    {
+                                      this.srcX=744;
+                                      drawn=false;
+                                    }
+                                }
+                                
+                                else if(this.srcX>700)
+                                  {
+                                    this.srcX=25;
+                                    this.srcY=0;
+                                    drawn=false;
+                                  } 
+                              }
+                          
+                        }
+
+                     
+                       
+                       
+
+                  
+                break;
+              }
        
        }
     
@@ -384,12 +545,13 @@
     createFlappy.prototype.draw=function(){
       if(!(this.isSpacebar))
       {
-        this.drawY+=6.3;
+        this.drawY+=6;
         if( (this.drawY+this.radius)>=415)         //flappy falls down
           {  
             isPlaying=false;
             welcomeMsg();
              setTimeout(function(){document.getElementById("pAgain").style.display="block";},1000);
+             drawn=false;
                    
      
           }
@@ -397,7 +559,7 @@
           
      
       }
-      else Play ag
+      else 
       {  
         if(this.drawY<0)
           this.drawY=0;              //for upper limit of motion of flappy
@@ -407,8 +569,10 @@
      
      
         ctxFlappy.drawImage(bird,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.radius*2,this.radius*2);
+        drawn=true;
      
     }
+    var drawn=false;
     createFlappy.prototype.wipe=function(){
      
      ctxFlappy.clearRect(0,0,gameWidth,gameHeight);
