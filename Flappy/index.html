@@ -6,7 +6,7 @@
 		document.title="My Flappy";
 		</script>
 		
-	    <meta name="viewport" content="width=device_width" charset="UTF-8" />
+	        <meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8" />
 		<link href="MyFlappy.css" rel="stylesheet" />
 		<link rel="icon" href="images/icon.png"/>
 	</head>
@@ -14,8 +14,7 @@
 	<body>
 		<style> html{display:none;} </style>
 			<script>
-				//frame killer
-   				if(self == top) {
+				if(self == top) {
        					document.documentElement.style.display = 'block'; 
    					} 
    					else 
@@ -33,14 +32,14 @@
 				<li id="l3" onclick="birdType(3)" onmouseover="changeFlappyPos(3)" >Lill berry</li>
 				<li id="l4" onclick="birdType(4)" onmouseover="changeFlappyPos(4)" >Red berry</li>
 			</ul>
-			<img src="images/flappy.png" width="200" height="200" id="guide"></img>
+			<img src="images/flappy.png" width="35%" height="110%" id="guide"></img>
 
 		</div>	
 		 <section>
 
-			<canvas id="game_canvas" height="590" width="1360" ></canvas>  <!-- for background and score-->
-            <canvas id="pipes_canvas" height="559" width="1360" ></canvas>
-			<canvas id="flappy_canvas" height="559" width="1360" ></canvas>
+			<canvas id="game_canvas"  ></canvas>  <!-- for background and score-->
+            		<canvas id="pipes_canvas"></canvas>
+			<canvas id="flappy_canvas" ></canvas>
 		 </section>
 
 		 <div id="pAgain" onclick="screwAgain()" >
@@ -54,11 +53,11 @@
 		 function changeFlappyPos(pos){
 		 	switch(pos)
 		 	{
-		 		case 2: im.style.top="20px";
+		 		case 2: im.style.top="15%";
 		 				break;
-		 		case 3: im.style.top="50px";
+		 		case 3: im.style.top="34%";
 		 				break;
-		 		case 4:im.style.top="80px";
+		 		case 4:im.style.top="55%";
 		 				break;
 		 	}
 		 }
