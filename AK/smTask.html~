@@ -14,7 +14,7 @@
 			}
 			img{
 				border-style: groove;
-				border-width: 12px;
+				border-width: 0px;
 				cursor: pointer;
 				margin: 0px;
 
