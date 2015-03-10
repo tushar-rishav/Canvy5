@@ -1,0 +1,157 @@
+#text
+{
+height:600px;
+width:1250px;
+margin-left:30px;
+margin-right:30px;
+background-color:#b8ff71;
+color:#7d003f;
+border-style:groove;
+border:5px 2px 1px 4px;
+border-left-color:blue;
+border-right-color:blue;
+
+}
+#title
+{   font-family:monospace;
+	text-align:center;
+	font-size:20px;
+	position:fixed;
+	background-color:black;
+	color:white;
+    margin-left:50%;
+    margin-top:0%;
+    margin-bottom:2%;	
+}
+center
+{
+background-color:black;
+color:white;
+font-family:monospace;
+}
+center:hover{background-color:gray; font-family:cursive;}
+
+
+fieldset
+{
+background-image: url('nature.png');
+background-attachment:fixed;
+}
+
+#container
+{
+background-image: url('nature.png');
+background-attachment: fixed;
+	
+}
+
+#control
+{   border-style: none;
+}
+#toolbar
+{   border-collapse:collapse;
+	border-style:groove;
+	border-radius: 10px;
+	
+	background: inherit;
+	box-shadow: 5px 5px 5px 5px #656;
+	
+}
+
+#toolbar:hover
+{
+	background-color:#647bfd;
+	color:black;
+		
+}
+#fontsize
+{
+	width:40px;
+}
+input
+{
+background-color:#cbdcfe;	
+}
+
+select
+{
+	background-color:#cbdcfe;
+	width:100px;
+}
+option
+{
+ background-color: transparent;
+ color:blue;	
+}
+
+option:hover
+{
+font-size:20px;
+cursor: pointer;
+}
+#arial{
+	font-family: Arial, Helvetica, sans-serif;
+}
+#cursive
+{
+font-family:"Comic Sans MS", cursive, sans-serif;	
+}
+#gadget
+{
+font-family:"Arial Black", Gadget, sans-serif;
+}
+#georgia
+{
+	font-family: Georgia, serif;
+}
+
+#monaco
+{
+	font-family:"Lucida Console", Monaco, monospace;
+}
+
+#geneva{
+	font-family: Tahoma, Geneva, sans-serif;
+}
+#timesnew{
+	font-family:"Times New Roman", Times, serif;
+}
+#helvetica
+{
+ font-family:"Trebuchet MS", Helvetica, sans-serif;
+}
+#charcoal{
+	font-family:Impact, Charcoal, sans-serif; 
+}
+#monospace{
+	font-family:"Courier New", Courier, monospace;
+}
+
+button
+{
+background-color:#cbdcfe;	
+}
+button:hover
+{
+cursor: pointer;
+}
+
+
+#searchwrd
+{   height:100%;
+	width:50%;
+	border-radius:10px;
+	border-color:green;
+	background-color: rgba(0,0,0,0.3);
+	color:white;
+	
+}
+#searchwrd:focus
+{   
+	outline:none;
+	border-color:#0080c0;
+	border-width: 6px;
+	width:100%;
+}
+
+

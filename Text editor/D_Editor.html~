@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+ <head>
+    <link rel="icon" href="delta.png" />
+    <link rel="stylesheet" href="D_Editor.css" type="text/css" />
+  	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D Editor</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+    $("#hideTool").click(function(){
+    $("#toolbar").animate({
+      height:'toggle'
+    });
+    });
+    });
+	</script>
+ </head>
+
+ <body>
+  <center>DeltPad</center>
+  <div id="control">
+      <button id="hideTool" title="Hide/Show Toolbar"  style="float:right;">Hide/Show</button>   
+      <!--<button id="showTool" title="Show Toolbar" onclick="showToolbar()" style="float:left;">Show</button>   -->
+  </div>
+  <div id="container">   
+   <div id="toolbar">
+	  
+    <table>
+	   <tr>
+	    <td><button id="bold" onclick="editDoc(this.id)" title="Bold" ><img src="bold.png" alt="B" /></button></td><!--Bold text-->
+	    <td><button id="italic" onclick="editDoc(this.id)" title="Italic" ><img src="italic.png" alt="I" /></button></td>  <!-- Italic text-->
+	    <td><button id="underline" onclick="editDoc(this.id)" title="Underlined" ><img src="underlined.png" alt="U" /></button></td>
+	    <!-- special styles -->
+	    
+		<td><button onclick="deltaStyle(1)" ><abbr title="Delta Bold"><b>DoLd</b></abbr></button></td>
+	    <td><button onclick="deltaStyle(2)" ><abbr title="Delta Italic"><i>DiTaLiC</i></abbr></button></td>
+	  
+	    <td><button id="justifycenter" onclick="editDoc(this.id)"  title="center" ><img src="center.png" alt="center" /></button></td> <!-- center align-->
+        <td><button id="justifyright" onclick="editDoc(this.id)" title="right aligned" ><img src="rightjustified.png"alt="Right Align" /></button></td>
+        <td><button id="justifyleft" onclick="editDoc(this.id)" title="left aligned" ><img src="leftjustified.png" alt="Left Align" /></button></td>
+        
+		<td><input type="color" id="fontcolor" onchange="changeFontColor()" value="#7d003f" title="Font Color" ></input></td> 
+        <td><input type="color" id="backgcolor" onchange="changeBackgroundColor()" value="#b8ff71" title="Background Color"></input></td> 
+        <td><input type="color" id="textcolor" onchange="document.execCommand('forecolor',false,this.value)" value="green" title="Change color of selected Text"></input></td> 
+		<td><b>Font-Size</b><input type="number" id="fontsize" onchange="changeFontSize()" value="30" title="Increase font-size"></input></td> 
+        <td>
+		   <SELECT title="font style" onchange="document.execCommand('fontName',false,this[this.selectedIndex].value)" >  		  <!-- font family-->
+		    <OPTION selected>font-family</OPTION>
+            <OPTION  id="monospace" value="Monospace">Monospace</OPTION>
+            <OPTION id="timesnew" value="TimesNewRoman">TimesNew Roman	           </OPTION>
+            <OPTION id="cursive"  value="Cursive">Cursive</OPTION>
+            <OPTION id="arial" value="Arial"> Arial</OPTION>
+            <OPTION id="gadget"  value="Gadget"> Gadget</OPTION>
+            <OPTION id="geneva"  value="Geneva"> Geneva</OPTION>
+            <OPTION id="charcoal"  value="Charcoal">Charcoal
+            </OPTION>
+            <OPTION id="monaco"  value="Monaco"> Monaco</OPTION>
+            <OPTION id="georgia" value="Georgia">Georgia</OPTION>
+            <OPTION id="helvetica" value="Helvetica">Helvetica</OPTION>
+     
+        </SELECT>
+       </td>
+	   <td><input type="search" id="searchwrd" placeholder="search for any word" onfocus="document.getElementById('searchButton').style.display='none'"  onblur="document.getElementById('searchButton').style.display='block'" ></input>
+       <button  id="searchButton" onclick="searchTheWord(document.getElementById('searchwrd').value)" accesskey="S" ><u>S</u>earch</button></td>
+	   <td><button onclick="replaceWord()">Replace</button></td>
+	  </tr>
+     </table>
+   </div>
+    <table>
+     <tr>
+      <td><button  onclick="wipe()" title="Erase">Wipe Off</button></td> <!-- wiping off -->
+      <td><button onclick="print()" title="print">Print</button></td>      
+	   <td><input type="button" onclick="compress()" value="Compress" /></td> 
+     </tr>
+	 <tr>
+	 Text's length (8 bits per character): <span id="inputlength"></span><br/>
+     Probabilities of all distinct characters in the text:<br /><span id="probabilities"></span><br/>
+     Binary codes assigned to characters:&nbsp;<span id="codes"></span>&nbsp;
+     Binary output: <span id="output"></span><br/>
+     Output's length in bits: <span id="outputlength"></span>
+	 </tr>
+    </table>	
+ </div>
+    <div style="background-image: url('nature.png'); background-attachment:fixed; background-repeat:repeat-y;">
+	<fieldset>
+      <legend>Text Area</legend>
+       <div id="text" contenteditable="true" spellcheck="off" placeholder="Hello User! You can start writing here" ></div>      
+	  </fieldset>
+   </div>
+
+
+   <script src="D_Editor.js" ></script>
+  
+ </body>
+
+</html>
