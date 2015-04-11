@@ -1,10 +1,4 @@
-TimePass
-========
-These are some of my spare time works where i try to apply what i have learnt so far..
-You can check demo for 
-
-
-Tackle at: http://delta.nitt.edu/~hentai/Tackle/index.html
+<h3>This is what i did when i was novice and was learning HTML and stuffs</h3>
 
 
 
