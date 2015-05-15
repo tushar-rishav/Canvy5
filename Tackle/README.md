@@ -1,6 +1,7 @@
-INCOMPLETE WORK! WORK UNDER PROGRESS!
-Controls are: 
-	RIGHT AND LEFT ARROW KEYS FOR MOVEMENT
-	ENTER KEY TO START THE GAME
-	SPACE BAR ALONG WITH ARROW KEYS TO INCREASE THE SPEED OF PLATFORM'S MOVEMENT
-	demo at www.rishav95facepick.hol.es/TackleIT/index.html
+Controls are: <br/>
+	<ul>
+	<li>
+	RIGHT and LEFT ARROW KEYS for movement
+	</li><li>ENTER KEY to start the game
+	</li><li>SPACE BAR along with ARROW KEYS to increase the speed of platform's movement</li></ul>
+	<a href="http://delta.nitt.edu/~hentai/Tackle/index.html" >Demo</a>
