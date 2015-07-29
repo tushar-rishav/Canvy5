@@ -1,4 +1,3 @@
-//DECLARING CANVAS AND ITS CONTEXT
  gamebg=document.getElementById('gamebg');
  gamebgCtx=gamebg.getContext('2d');
  
@@ -26,8 +25,6 @@
       window.requestAnimationFrame = window[browsers[x]+'RequestAnimationFrame'];
 
    var requestAnimFrame=window.requestAnimationFrame;
-//DECLARING VARIABLES
-
  gameWidth=gamebg.width;
  gameHeight=gamebg.height;
  var brickCount=[],platformObj= new createPlatform(), strikerObj= new createStriker(),player1= new player(), bricksObj=[],bricksX=0,j, bricksY=0,platformHit=false,keypressed=0,foul=false,isStart=false,speed_control;
@@ -39,7 +36,6 @@
    genRandom=(genRandom*100)%65;
    genRandom=parseInt(genRandom);
    spclBricks[coord]=genRandom;
-   //console.log(spclBricks[coord]);
  }
  function init()
  {  
@@ -52,25 +48,18 @@
          else
             bricksObj.push(new createNormalBricks());
        }
-    // document.getElementById("sound").innerHTML='<audio id="hitPlay" src="sound.mp3" autoplay ></audio>';  
    
     myLoop();
  }
 
  function myLoop(){
-    if(foul)
-      {   //player1.nameIs+=" Game over";
+    if(foul){ 
           window.cancelAnimationFrame(animationControl);
           clearTimeout(speed_control);
-
-          //foul=false;
       } 
      platformObj.draw();
      strikerObj.draw();
      drawBricks();
-     //checkIfGameOver();
-    // fallingBricks();
-     
      animationControl=requestAnimFrame(myLoop);
  }
  function fallingBricks(){
@@ -83,11 +72,9 @@
  }
 
  function drawBricks()
- {  //console.log("bricks drawing");
-   
+ {  
   for(var i=0;i<65;i++)
-    {     // bricksCoord.push();
-           bricksObj[i].drawX=bricksX;
+    {      bricksObj[i].drawX=bricksX;
            bricksObj[i].drawY=bricksY;
          
            if(!bricksObj[i].hit)
@@ -104,7 +91,6 @@
             bricksX=0;
             bricksY+=bricksObj[0].height+2;
            }
-           //A LAYER OF 13 BRICKS CREATED
            
        
     }
@@ -125,27 +111,21 @@ function checkHit()
         var layer_no= ( (4- Math.floor(j/13) )*13-1 );
  
     if(!bricksObj[layer_no+rel_position_from_end].hit&&strikerObj.drawY<=5*bricksObj[0].height&&strikerObj.drawY>(4-Math.floor(j/13) )*bricksObj[0].height&&strikerObj.drawX>=bricksObj[j].drawX&&strikerObj.drawX<=(bricksObj[j].drawX+bricksObj[0].width) )
-     { // PAIN HERE 
-        
-        //console.log(layer_no+rel_position_from_end);
-        
+     {  
          for(k=0;k<7;k++)
          {
           if((layer_no+rel_position_from_end)==spclBricks[k]) //match if the hit brick is spcl brick
                {
-                  //console.log(spclBricks[k]);
                 bricksObj[layer_no+rel_position_from_end].hit_count++;
                 bricksObj[spclBricks[k]].no_spcl=true;
                 console.log(spclBricks[k]); 
                
-                //console.log(bricksObj[spclBricks[k]].hit_count+" "+bricksObj[spclBricks[k]].hit);
                } 
 
           if(bricksObj[spclBricks[k]].hit_count==2)
               {
                 
                 bricksObj[spclBricks[k]].no_spcl=false;
-                //break;
               } 
             
           }
@@ -163,8 +143,7 @@ function checkHit()
        
       
       
-      break;  //pain  the time for which the above conditions are satisfied is enough to loop over all the bricks and set its hit to true..so i m using break here to come out of iteration
-       
+      break;  
      }
   }
 }
@@ -187,14 +166,6 @@ function checkIfGameOver(){
           isStart=false;
     }
 }
-
-//END OF VARIABLE DECLARATION
-
- 
-
- 
- 
-  //DRAWING BACKGROUND
 
  spriteImage.addEventListener('load',init, false);
 
@@ -230,8 +201,8 @@ function createSpecialBricks(){
   this.hit=false;
   this.exists=true;
   this.hit_count=0;
-  this.no_spcl=false;   //to check if the brick hit was special
-  //console.log("special bricks created");
+  this.no_spcl=false;   
+ 
 }
 
 createSpecialBricks.prototype.draw=function()
@@ -272,7 +243,7 @@ createStriker.prototype.draw=function()
 {  clearStriker();
   if(isStart)
   {  
-      checkForCollision(); // IN FUTURE MODIFY VELOCITY WITH TIME.i.e INCREASE SPEED WD TIME..SO MAKE IT TOUGHER TO PLAY
+      checkForCollision();
       this.drawX+=this.velocity_x*Math.cos(this.init_angle);
       this.drawY+=this.velocity_y*Math.sin(this.init_angle);
       strikerCtx.drawImage(spriteImage,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.width,this.height);
@@ -347,7 +318,6 @@ function clearStriker()
     	if((strikerObj.drawX>platformObj.drawX )&& (strikerObj.drawX<(platformObj.drawX+platformObj.width))&&(strikerObj.drawY>(gameHeight-platformObj.height-40) ) )  	
    			{
                  strikerObj.velocity_y*=-1;
-                 // console.log("x coord is: "+strikerObj.drawX+(strikerObj.width)/2+"y coord is "+strikerObj.drawY+strikerObj.height);
                  foul=false;
                  changeReboundAngle();
                  strikerObj.increase_speed();
@@ -366,9 +336,6 @@ function clearStriker()
     strikerObj.init_angle=Math.PI*angle/180;  //CONVERTED TO RADIAN
  }
 
-//	CREATING PLATFORM OBJECT AND ITS ASSOCIATED METHOD
-
-  /**************************************************************/
 function createPlatform() {
 	this.srcX=0;
 	this.srcY=0;
@@ -381,45 +348,34 @@ function createPlatform() {
 	this.isSpacebar=false;
 
 }
-  /**************************************************************/
 createPlatform.prototype.draw=function(){
      clearPlatform();
      checkForKeys();
      platformCtx.drawImage(spriteImage,this.srcX,this.srcY,this.width,this.height,this.drawX,this.drawY,this.width,this.height);
      
 }
-  /**************************************************************/
 function clearPlatform(){
-  //console.log("clearing");
 	platformCtx.clearRect(0,0,gameWidth,gameHeight);
 }
-  /**************************************************************/
 
     document.addEventListener('keydown', checkKeyDown, false);  //game controls
     document.addEventListener('keyup', checkKeyUp, false);
 
-     /**************************************************************/
- 
 
 
    function checkKeyUp(e){
    			 var keyID = e.keyCode || e.which;
-	//console.log("the key pressed is: "+keyID);
-    
     if (keyID === 39)
-	{ //right arrow 
-        platformObj.isRightKey = false;
+	{     platformObj.isRightKey = false;
         e.preventDefault();
     }
    
     if (keyID === 37 )
-	{ //left arrow 
-        platformObj.isLeftKey = false;
+	{     platformObj.isLeftKey = false;
         e.preventDefault();
     }
     if (keyID === 32)
-	{ //spacebar  to increase movement speed 
-        platformObj.isSpacebar = false;
+	{     platformObj.isSpacebar = false;
         e.preventDefault();
     }
    if(keyID===38||keyID==40)
@@ -428,15 +384,14 @@ function clearPlatform(){
    }
 
    }
-     /**************************************************************/
+    
  var isGameNotOver=true;
    function checkKeyDown(e){
       
        var  keyID = e.keyCode || e.which;
        
       if (keyID === 13&&isGameNotOver)
-    { // ENTER to start the game 
-        isStart = true;
+    {   isStart = true;
         player1.score=-1;
         player1.nameIs="Mr X";
         e.preventDefault();
@@ -445,30 +400,25 @@ function clearPlatform(){
       alert("game hasnt begin.Please refresh and press enter to play");
   
 
-	  //console.log("the key pressed is: "+keyID);
-      if(isStart)
+	    if(isStart)
         {
           if (keyID === 39)
-      	  { //right arrow 
-              platformObj.isRightKey = true;
+      	  {   platformObj.isRightKey = true;
               e.preventDefault();
           }
          
           if (keyID === 37 )
-      	  { //left arrow 
-              platformObj.isLeftKey = true;
+      	  {   platformObj.isLeftKey = true;
               e.preventDefault();
           }
           if (keyID === 32)
-      	  { //spacebar  to increase movement speed 
-              platformObj.isSpacebar = true;
+      	  {   platformObj.isSpacebar = true;
               e.preventDefault();
           }
     
         }
  
    }
-     /**************************************************************/
 
    function checkForKeys()
    {
@@ -489,5 +439,4 @@ function clearPlatform(){
           platformObj.drawX+=5;
    }
 
-   /**************************************************************/
 
